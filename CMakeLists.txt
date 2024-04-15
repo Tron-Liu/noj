@@ -9,10 +9,16 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_C_STANDARD_REQUIRED ON)
 set(CMAKE_C_STANDARD 11)
 
+# path
 set(MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/module)
+set(THIRD_PARTY_PATH ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty)
 
 # module name
 set(INI_PARSER_NAME iniParser)
 
+# third party module name
+set(LOGGER_NAME spdlog)
+
 add_subdirectory(src)
 add_subdirectory(module)
+add_subdirectory(thirdparty)
