@@ -15,9 +15,13 @@ set(THIRD_PARTY_PATH ${CMAKE_CURRENT_SOURCE_DIR}/thirdparty)
 
 # module name
 set(INI_PARSER_NAME iniParser)
+set(NET_NAME net)
+set(LOG_NAME logger)
+set(UTILS_NAME utils)
+set(THREADPOOL_NAME threadPool)
 
 # third party module name
-set(LOGGER_NAME spdlog)
+set(SPDLOG_NAME spdlog)
 
 add_subdirectory(src)
 add_subdirectory(module)
