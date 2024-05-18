@@ -14,17 +14,14 @@ namespace TL {
 
 bool Socket::Create()
 {
-  // create socket
   int sock = socket(PF_INET, SOCK_STREAM, 0);
 
-  // create failed
   if (-1 == sock) {
     logger_->error("create socket failed, errno is {}", errno);
     fd_ = 0;
 
     return false;
   } else {
-    // create successfully
     fd_ = sock;
   }
 
@@ -83,16 +80,29 @@ void Socket::Close()
   connected_ = false;
 }
 
-int Socket::Recv(char* buffer)
+bool Socket::Recv(char* data, int& length)
 {
-  // TODO
-  logger_->info("recv success");
-  return 0;
+  int ret = recv(fd_, data, MAX_BUFFER_SIZE - 1, 0);
+  
+  if (-1 == ret) {
+    logger_->error("recv data failed, errno is {}", errno);
+    return false;
+  }
+
+  length = ret;
+  return true;
 }
 
-int Socket::Send() {
-  // TODO
-  return 0;
+bool Socket::Send(const char* data, const int length)
+{
+  int ret = send(fd_, data, length, 0);
+
+  if (-1 == ret) {
+    logger_->info("data sends failed, errno is {}", errno);
+    return false;
+  }
+
+  return true;
 }
 
 int Socket::GetFd() const noexcept { return fd_; }

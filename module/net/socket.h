@@ -15,6 +15,7 @@
 #include <memory>
 #include <string>
 
+#include "core.h"
 #include "logger.h"
 
 namespace TL {
@@ -61,10 +62,29 @@ public:
    */
   bool Accept(std::shared_ptr<Socket>& connfd);
 
+  /**
+   * @brief Close a connection socket
+   * 
+   */
   void Close();
 
-  int Recv(char* buffer);
-  int Send();
+  /**
+   * @brief Receive data from the connection socket
+   * 
+   * @param[out] data      The received data
+   * @param[out] length    The length of Received data
+   * @return true          Receive data successfully
+   */
+  bool Recv(char* data, int& length);
+
+  /**
+   * @brief Sending data through the connection socket
+   * 
+   * @param[in] data      The data to be send
+   * @param[in] length    The length of data
+   * @return true         Sending data successfully
+   */
+  bool Send(const char* data, const int length);
 
   /**
    * @brief Get the current socket's file descriptor
