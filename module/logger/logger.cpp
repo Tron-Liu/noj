@@ -8,7 +8,7 @@
 #include <string>
 #include <unistd.h>
 
-namespace TL {
+namespace noj {
 
 Logger* Logger::GetInstance()
 {
@@ -31,4 +31,4 @@ void Logger::Init(LogConfig config)
   logger_->flush_on(spdlog::level::from_str(config.level));
 }
 
-} // namespace TL
+} // namespace noj

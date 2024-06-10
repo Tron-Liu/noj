@@ -6,7 +6,7 @@
 #include <memory>
 #include <string>
 
-namespace TL {
+namespace noj {
 
 struct LogConfig {
   std::string level;
@@ -56,4 +56,4 @@ public:
   BASELOG(                                                                     \
     Logger::GetInstance()->GetLogger(), spdlog::level::critical, __VA_ARGS__)
 
-} // namespace TL
+} // namespace noj
